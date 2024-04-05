@@ -1,0 +1,17 @@
+{
+    "idempotency_key": "DEADBEEF",
+    "amount_money": {
+        "amount": 12345.67,
+        "currency": "AUD"
+    },
+    "source_id": "SwissWatch PTY LTD",
+    "autocomplete": true,
+    "customer_id": "geoff",
+    "location_id": "AU",
+    "reference_id": "123456",
+    "note": "rolex submariner",
+    "app_fee_money": {
+        "amount": 10,
+        "currency": "AUD"
+    }
+}

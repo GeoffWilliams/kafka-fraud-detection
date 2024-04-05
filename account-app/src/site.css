@@ -1,0 +1,110 @@
+html {
+    background-color: teal;
+    font-size: 2rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    padding-top: 50px;
+}
+
+#banner, #account, #location, #transactions {
+    border: 10px solid black;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: paleturquoise;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+
+#banner {
+    display: flex;
+}
+
+#banner > div {
+    margin-left: 50px;
+}
+
+
+h1 {
+    font-size: 4rem;
+    padding: 20px;
+    margin: 20px;
+}
+
+h2 {
+    font-size: 3rem;
+    padding: 0;
+    margin: 0;
+}
+
+#badmessages textarea {
+    font-size: 0.4rem;
+    border: 5px solid black;
+    border-radius: 20px;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 1em;
+    word-wrap: break-word;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    margin: 0 auto;
+    background-color: paleturquoise;
+    border-spacing: 0;
+    margin-bottom: 100px;
+}
+
+td, th {
+    padding: 5px;
+    text-align: left;
+}
+
+th {
+    border: 5px solid black;
+}
+
+td {
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    border-bottom: 5px solid black;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 1em;
+}
+
+th:first-of-type {
+    border-top-left-radius: 10px;
+}
+th:last-of-type {
+    border-top-right-radius: 10px;
+}
+tr:last-of-type td:first-of-type {
+    border-bottom-left-radius: 10px;
+}
+tr:last-of-type td:last-of-type {
+    border-bottom-right-radius: 10px;
+}
+
+th {
+    background-color: blue;
+    color: white;
+}
+
+tr:nth-of-type(odd) {
+    background-color: lightblue;
+}
+
+.quote {
+    font-style: italic;
+    font-size: 0.5rem;
+}
+
+#country {
+    font-size: 4em;
+}

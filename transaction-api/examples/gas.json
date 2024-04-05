@@ -1,0 +1,17 @@
+{
+    "idempotency_key": "BADD4DE",
+    "amount_money": {
+        "amount": 192.24,
+        "currency": "USD"
+    },
+    "source_id": "dino gasoline LLC",
+    "autocomplete": true,
+    "customer_id": "geoff",
+    "location_id": "US",
+    "reference_id": "123456",
+    "note": "american gasoline",
+    "app_fee_money": {
+        "amount": 10,
+        "currency": "USD"
+    }
+}

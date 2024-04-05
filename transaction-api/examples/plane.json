@@ -1,0 +1,17 @@
+{
+    "idempotency_key": "DEADBEEF",
+    "amount_money": {
+        "amount": 21000.10,
+        "currency": "AUD"
+    },
+    "source_id": "Corporate Jets Australia PTY LTD",
+    "autocomplete": true,
+    "customer_id": "geoff",
+    "location_id": "AU",
+    "reference_id": "123456",
+    "note": "Gulfstream G6",
+    "app_fee_money": {
+        "amount": 10,
+        "currency": "AUD"
+    }
+}

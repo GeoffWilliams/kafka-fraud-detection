@@ -1,0 +1,7 @@
+# adust as needed. this is the APAC PS test environment...
+cc_environment_id="env-09pq96"
+basename="fraud-demo"
+topics=[
+    "locations",
+    "transactions"
+]

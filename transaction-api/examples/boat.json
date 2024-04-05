@@ -1,0 +1,17 @@
+{
+    "idempotency_key": "DEADBEEF",
+    "amount_money": {
+        "amount": 10000.10,
+        "currency": "AUD"
+    },
+    "source_id": "Billys Boats",
+    "autocomplete": true,
+    "customer_id": "geoff",
+    "location_id": "AU",
+    "reference_id": "123456",
+    "note": "fancy boat",
+    "app_fee_money": {
+        "amount": 10,
+        "currency": "AUD"
+    }
+}
