@@ -8,12 +8,12 @@
         let parsed = false
         try {
             const json = JSON.parse(message)
-            if ("idempotency_key" in json &&
-                "source_id" in json &&
-                "location_id" in json &&
-                "amount_money" in json &&
-                "amount" in json.amount_money &&
-                "currency" in json.amount_money) {
+            if (json["idempotency_key"] &&
+                json["source_id"] &&
+                json["location_id"] &&
+                json["amount_money"] &&
+                json["amount_money"]["amount"] &&
+                json["amount_money"]["currency"]) {
                     parsed = json;
             }
         } catch (e) {}
@@ -30,9 +30,9 @@
             console.debug(`received transaction: ${payload}`)
             const newTransaction = parseTransaction(payload)
             if (newTransaction) {
-                transactions = [...transactions, newTransaction]
+                transactions = [newTransaction, ...transactions]
             } else {
-                badMessages = [...badMessages, payload]
+                badMessages = [payload, ...badMessages]
             }
         });
 	});
@@ -56,7 +56,7 @@
               <tr>
                 <td>{transaction.idempotency_key}</td>
                 <td>{transaction.ts}</td>
-                <td>{transaction.amount_money.amount}</td>
+                <td style="text-align: right;">${transaction.amount_money.amount.toFixed(2)}</td>
                 <td>{transaction.amount_money.currency}</td>
                 <td>{transaction.source_id}</td>
                 <td>{transaction.location_id}</td>
