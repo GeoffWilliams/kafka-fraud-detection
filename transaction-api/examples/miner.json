@@ -1,0 +1,17 @@
+{
+    "idempotency_key": "DEADBEEF",
+    "amount_money": {
+        "amount": 17999,
+        "currency": "USD"
+    },
+    "source_id": "RuskyMax Mining Supplies",
+    "autocomplete": true,
+    "customer_id": "geoff",
+    "location_id": "RU",
+    "reference_id": "123456",
+    "note": "KAS Miner KS5",
+    "app_fee_money": {
+        "amount": 1,
+        "currency": "AUD"
+    }
+}

@@ -3,12 +3,12 @@ include ~/.kafka-fraud-detection.env
 run:
 	echo $(KAFKA_BOOTSTRAP)
 	KAFKA_BOOTSTRAP=$(KAFKA_BOOTSTRAP) KAFKA_USERNAME=$(KAFKA_USERNAME) KAFKA_PASSWORD=$(KAFKA_PASSWORD) \
-		deno run --allow-net --allow-env --allow-read app.ts
+		bun run src/standalone.ts
 
 
 
 qr:
-	deno run --allow-run --allow-net --allow-read --allow-write --allow-env qr-generator.ts
+	bun run src/qr-generator.ts
 
 
 bad:

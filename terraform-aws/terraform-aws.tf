@@ -133,18 +133,21 @@ resource "aws_secretsmanager_secret_version" "value" {
 #
 
 resource "aws_lambda_function" "function" {
-  function_name    = "${var.lab_name}-lambda"
-  role             = aws_iam_role.lambda_role.arn
-  s3_bucket = aws_s3_object.app_zip.bucket
-  s3_key = aws_s3_object.app_zip.key
-  timeout = 300
-  runtime = "provided.al2023"
-  handler       = "anything"
+  function_name = "${var.lab_name}-lambda"
+  role          = aws_iam_role.lambda_role.arn
+  s3_bucket     = aws_s3_object.app_zip.bucket
+  s3_key        = aws_s3_object.app_zip.key
+  timeout       = 300
+  runtime       = "provided.al2023"
+  handler       = "handler.fetch"
 
   // AWS-Parameters-and-Secrets-Lambda-Extension
   // needed for secretsmanager access without SDK
   // lookup ARN here: https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-integration-lambda-extensions.html#ps-integration-lambda-extensions-add
-  layers = ["arn:aws:lambda:ap-southeast-2:665172237481:layer:AWS-Parameters-and-Secrets-Lambda-Extension:11"]
+  layers        = [
+    "arn:aws:lambda:ap-southeast-2:665172237481:layer:AWS-Parameters-and-Secrets-Lambda-Extension:11",
+    "arn:aws:lambda:ap-southeast-2:492737776546:layer:bun:1"
+  ]
 
   environment {
     variables = {
@@ -244,5 +247,5 @@ output "base_url" {
 
 output "test_command" {
   description = "How to test this lambda"
-  value = "curl -v ${aws_apigatewayv2_stage.lambda.invoke_url}/example"
+  value = "curl -v ${aws_apigatewayv2_stage.lambda.invoke_url}/example/boat.json"
 }

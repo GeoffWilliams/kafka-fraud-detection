@@ -1,43 +1,65 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	  import { onMount } from 'svelte';
+    import { TransactionMessageType, type TransactionMessage} from "shared/src/interfaces";
 
     let transactions: Array<any> = []
+    let transactionChallenge: Array<any> = []
+    let transactionForbid: Array<any> = []
     let badMessages: Array<string> = []
 
-    const parseTransaction = (message: string) => {
-        let parsed = false
+    const parseTransaction = (message: string): TransactionMessage|undefined => {
         try {
-            const json = JSON.parse(message)
-            if (json["idempotency_key"] &&
-                json["source_id"] &&
-                json["location_id"] &&
-                json["amount_money"] &&
-                json["amount_money"]["amount"] &&
-                json["amount_money"]["currency"]) {
-                    parsed = json;
-            }
-        } catch (e) {}
-
-        return parsed
+            const json = JSON.parse(message);
+            const transactionMessage = json as TransactionMessage;
+            return transactionMessage;
+        } catch (e) {
+          console.error("JSON parse error!!! ");
+          console.error(message);
+        }
     }
 
 
     onMount(() => {
         console.debug("onmount!")
-        const ws = new WebSocket("ws://localhost:9000/wss/transaction");
+        const ws = new WebSocket("ws://localhost:9000/ws/transactionMessage");
         ws.addEventListener("message", (message: any) => {
             const payload = message.data
             console.debug(`received transaction: ${payload}`)
-            const newTransaction = parseTransaction(payload)
-            if (newTransaction) {
-                transactions = [newTransaction, ...transactions]
+            const transactionMessage = parseTransaction(payload)
+            if (transactionMessage && transactionMessage.transactionMessageType === TransactionMessageType.TransactionReceived) {
+                // received
+                transactions = [transactionMessage.TransactionReceived, ...transactions]
+            } else if (transactionMessage && transactionMessage.transactionMessageType === TransactionMessageType.TransactionChallenge) {
+                // challenge
+                transactionChallenge = [transactionMessage.TransactionChallenge, ...transactionChallenge]
+            } else if (transactionMessage && transactionMessage.transactionMessageType === TransactionMessageType.TransactionForbid) {
+                // forbid
+                transactionForbid = [transactionMessage.TransactionForbid, ...transactionForbid]
             } else {
                 badMessages = [payload, ...badMessages]
             }
         });
 	});
 </script>
+
 <section id="transactions">
+    <h2>Forbidden</h2>
+    EG banned countries:
+    <ul>
+    {#each transactionForbid as tf}
+      <li>${JSON.stringify(tf)}</li>
+    {/each}
+    </ul>
+
+    <h2>Challenge</h2>
+    Eg 3D secure - ask customer to enter OTP from an app
+    <ul>
+      {#each transactionChallenge as tc}
+        <li>${JSON.stringify(tc)}</li>
+      {/each}
+    </ul>
+
+
     <h2>Recent Transactions: {transactions.length}</h2>
     <body>
         <table>

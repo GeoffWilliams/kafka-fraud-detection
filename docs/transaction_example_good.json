@@ -1,4 +1,5 @@
 {
+    "ts": "2024-06-26T04:37:26Z",
     "idempotency_key": "DEADBEEF",
     "amount_money": {
         "amount": 12345.67,

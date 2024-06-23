@@ -3,4 +3,5 @@
 **/.terraform
 **/*.html
 **/*.zip
+**/node_modules
 build

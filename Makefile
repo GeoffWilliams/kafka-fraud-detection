@@ -14,8 +14,8 @@ docker_run:
 zipfile:
 	rm -rf build
 	mkdir build
-	cd build \
-	&& deno compile -o bootstrap --allow-net --allow-env --allow-read ../transaction-api/lambda.ts \
+	bun build transaction-api/src/lambda.ts --outfile ./build/handler.js --target=bun --external=date-format \
+	&& cd build \
 	&& zip -r app-$(IMAGE_VERSION).zip . \
 	&& cd ../transaction-api \
 	&& zip -u -r ../build/app-$(IMAGE_VERSION).zip examples

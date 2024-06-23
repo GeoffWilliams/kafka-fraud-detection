@@ -1,0 +1,17 @@
+{
+    "idempotency_key": "DEADBEEF",
+    "amount_money": {
+        "amount": 500,
+        "currency": "AUD"
+    },
+    "source_id": "MAPPLE Gift Vouchers Ltd",
+    "autocomplete": true,
+    "customer_id": "geoff",
+    "location_id": "AU",
+    "reference_id": "123456",
+    "note": "gift voucher",
+    "app_fee_money": {
+        "amount": 1,
+        "currency": "AUD"
+    }
+}

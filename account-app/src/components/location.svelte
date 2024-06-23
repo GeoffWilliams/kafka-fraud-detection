@@ -4,7 +4,7 @@
     let locationEmoji = "UNKNOWN"
     onMount(() => {
         console.debug("onmount!")
-        const ws = new WebSocket("ws://localhost:9000/wss/location");
+        const ws = new WebSocket("ws://localhost:9000/ws/location");
         ws.addEventListener("message", (message: any) => {
             const json = JSON.parse(message.data)
             console.debug(`location update: ${message.data}`)
@@ -14,7 +14,7 @@
 	});
 
     // https://dev.to/jorik/country-code-to-flag-emoji-a21
-    const getFlagEmoji = (countryCode: string) =>String.fromCodePoint(...[...countryCode.toUpperCase()].map(x=>0x1f1a5+x.charCodeAt()))
+    const getFlagEmoji = (countryCode: string) =>String.fromCodePoint(...[...countryCode.toUpperCase()].map(x=>0x1f1a5+x.charCodeAt(0)))
 
 </script>
 <section id="location">

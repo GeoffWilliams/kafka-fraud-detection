@@ -1,0 +1,17 @@
+{
+    "idempotency_key": "DEADBEEF",
+    "amount_money": {
+        "amount": 1689,
+        "currency": "AUD"
+    },
+    "source_id": "P.rusa 3D",
+    "autocomplete": true,
+    "customer_id": "geoff",
+    "location_id": "CZ",
+    "reference_id": "123456",
+    "note": "Original P.rusa MK4 3D Printer",
+    "app_fee_money": {
+        "amount": 1,
+        "currency": "AUD"
+    }
+}
